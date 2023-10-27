@@ -85,8 +85,9 @@ app.post("/login", async (req, res ) =>{
     }
 });
 
+
 //Get /Products
-app.get("/Products", async (req, res) => {
+app.get("/products", async (req, res) => {
    const Products = await Product.find();
 
    res.json({
@@ -97,7 +98,7 @@ app.get("/Products", async (req, res) => {
 });
 
 //Post /Product
-app.post("/Product", async (req, res) => {
+app.post("/product", async (req, res) => {
     const {
         name,
         description,
@@ -135,9 +136,54 @@ app.post("/Product", async (req, res) => {
 });
 
 //Get /Product/:id
-//Put /Product/:id
-//Get /Product/Search?query
+app.get("/product/:id", async (req, res) => {
+   const {id} = req.params;
 
+   const product = await Product.findById(id);
+
+   res.json({
+    success: true,
+    data: product,
+    message: "Product fetched successfully"
+   });
+});
+
+//Put /Product/:id
+app.put("/product/:id", async (req, res) => {
+  const {id} = req.params;
+
+  const { name, description, price, image, category, brand, } = req.body;
+
+    await Product.updateOne({_id: id}, {$set : {
+     name: name,
+     description: description,
+     price: price,
+     image: image,
+     category: category,
+     brand: brand,
+  }});
+
+  const updatedProduct = await Product.findById(id);
+
+   res.json({
+    success: true,
+    data: updatedProduct,
+    message: "Product update successfully"
+   }); 
+});
+
+//Get /Product/Search?query
+app.get("/products/search", async (req, res) => {
+    const {q} = req.query;
+
+    const products = await Product.find({name: {$regex: q, $options: "i"}});
+
+    res.json({
+        success: true,
+        data: products,
+        message: "Product fetched successfully"
+    });
+});
 
 
 
