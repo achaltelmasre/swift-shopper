@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import User from './models/User.js';
+import Product from './models/Product.js';
 
 const app = express();
 app.use(express.json());
@@ -17,7 +18,6 @@ const connectDB = async () => {
 };
 
 //post /signup
-
 app.post("/signup", async (req, res) => {
    const {
       name, 
@@ -83,7 +83,63 @@ app.post("/login", async (req, res ) =>{
             message: "Invalid credentials"
         });
     }
-})
+});
+
+//Get /Products
+app.get("/Products", async (req, res) => {
+   const Products = await Product.find();
+
+   res.json({
+    success:true,
+    data: Products,
+    message: "Products fetched successfully"
+   });
+});
+
+//Post /Product
+app.post("/Product", async (req, res) => {
+    const {
+        name,
+        description,
+        price,
+        image,
+        category,
+        brand,
+    } = req.body;
+
+    const product = new Product({
+        name:name,
+        description: description,
+        price: price,
+        image: image,
+        category: category,
+        brand: brand,
+    });
+
+    try{
+        const savedProduct = await product.save();
+
+        res.json({
+            success: true,
+            data: savedProduct,
+            message: "Product created successfully"
+        });
+    }
+    catch(e)
+    {
+       res.json({
+        success: false,
+        message: e.message
+       });
+    }
+});
+
+//Get /Product/:id
+//Put /Product/:id
+//Get /Product/Search?query
+
+
+
 
 const PORT = process.env.PORT || 5000;
 
