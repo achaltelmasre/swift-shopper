@@ -5,6 +5,7 @@ dotenv.config();
 
 import User from './models/User.js';
 import Product from './models/Product.js';
+import Order from "./models/order.js";
 
 const app = express();
 app.use(express.json());
@@ -185,7 +186,64 @@ app.get("/products/search", async (req, res) => {
     });
 });
 
+//Post / order
+app.post("/order", async (req, res) => {
+    const {
+        user,
+        product,
+        quantity,
+        shippingAddress,
+        deliveryCharges
+    } = req.body;
 
+    const order = new Order({
+        user: user ,
+        product: product,
+        quantity: quantity,
+        shippingAddress: shippingAddress,
+        deliveryCharges: deliveryCharges
+    });
+
+   try{
+        const savedOrder = await order.save();
+
+        res.json({
+            success: true,
+            data: savedOrder,
+            message: "Order created successfully"
+        });
+    }
+    catch(e){
+        res.json({
+            success: false,
+            message: e.message
+        });
+    }
+})
+
+//Get / order/:id
+app.get("/order/:id", async (req, res) =>{
+    const {id} = req.params;
+
+    const order = await Order.findById(id).populate("user");
+
+    order.user.password = undefined;
+    order.user.gender = undefined;
+    order.user.address = undefined;
+    order.user.createdAt = undefined;
+    order.user.updatedAt = undefined;
+
+    res.json({
+      success: true,
+      data: order,
+      message: "Order fetched successfully"
+    });
+})
+
+//Get/order/user/:id
+
+
+//Patch/order/:id
 
 const PORT = process.env.PORT || 5000;
 
