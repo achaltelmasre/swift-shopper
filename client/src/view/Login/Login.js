@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Navbar from "../../component/Navbar/Navbar";
 
 import './Login.css';
 import axios from "axios";
@@ -21,16 +22,32 @@ function Login (){
         alert(response?.data?.message);
 
         if (response?.data?.success) {
+            localStorage.setItem("user", JSON.stringify(response?.data?.data));
+        }
+
+        if (response?.data?.success) {
             alert(response?.data?.message);
-            window.location.href = "/home";
+            window.location.href = "./";
         }
 
     }
+
+    useEffect(() => {
+        const storageUser = JSON.parse(localStorage.getItem("user") || '{}')
+        
+        if (storageUser?.email) {
+            alert("You are already logged in!");
+            window.location.href = "/";
+        }
+
+    }, [])
  
     return(
+      
         <div className="login">
+              <Navbar/>
             <form className="main-container">
-                <h1>Login</h1>
+                <h1 className="text-center">Login</h1>
 
                 <div>
             <lable htmlFor='email'>Email:</lable>
@@ -53,9 +70,12 @@ function Login (){
            <button type="button" className="btn login-btn"
               onClick={login}
            > Login </button>
+          
+          <p className="text-center">
+          <Link to="../signup" className="address-link" >Create new Account</Link>
 
-           <Link to="../signup">Create new Account</Link>
-
+          </p>
+           
             </form>
 
         </div>

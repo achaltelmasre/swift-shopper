@@ -1,0 +1,39 @@
+.navbar{
+    background-color: white;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+    display: flex;
+   justify-content: space-between;
+}
+.navbar-link{
+    text-decoration: none;
+    color: black;
+    font-size: 23px;
+    margin: 10px 20px;
+    padding-top: 20px;
+   
+}
+.navbar-link:hover{
+
+    color: red;
+    text-decoration:  3px underline rgb(45, 247, 45);g
+    /* padding: 15px 10px; */
+}
+.user{
+    font-weight: bold;
+}
+.navbar-logout{
+    text-decoration:none ;
+    color: white;
+    font-size: 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    background-color: black;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+.hello-user{
+    padding-top: 15px;
+}
