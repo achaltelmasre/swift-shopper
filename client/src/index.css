@@ -13,12 +13,6 @@ body{
     box-shadow: 0 0 10px 0.5px rgb(14, 47, 195);
    
   
-    /* top:50px;
-    width: 500px;
-    /* padding: 20 15;*/
-    /* text-align: center;  */
-    /* display: block; */ 
-
 }
 .input-form{
   
@@ -33,7 +27,7 @@ body{
     background-color: black;
     border: none;
     border-radius: 10px;
-    min-width: 150px;
+    min-width: 250px;
     padding: 10px 20px;
     text-align: center;
     color: white;
