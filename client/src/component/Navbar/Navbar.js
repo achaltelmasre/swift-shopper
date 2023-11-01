@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import logo from './img/logo.png';
 
 import { Link } from 'react-router-dom';
-
 import './Navbar.css';
 
 function Navbar () {
@@ -18,7 +17,7 @@ function Navbar () {
         <>  
              <div className="navbar">
                   <span>
-                      <img src={logo} height={50} />
+                      <Link to="/"><img src={logo} height={50}/> </Link>
                   </span>
 
                   <div className="navbar-link-container">
@@ -37,7 +36,7 @@ function Navbar () {
                   </div>
 
                   <div className="hello-user">
-                        Hello, <span className="user"> {user.name || 'User!'}</span>
+                        Hello , <span className="user">  {user.name || 'User!'}</span>
                        
                        {
                         user?.name ? 
