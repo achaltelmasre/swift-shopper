@@ -21,7 +21,7 @@ function Navbar () {
                       <img src={logo} height={50} />
                   </span>
 
-                  <div>
+                  <div className="navbar-link-container">
                     <Link to="/login" className="navbar-link">
                         Login
                     </Link>
