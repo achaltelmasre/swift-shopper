@@ -1,0 +1,34 @@
+.product-card-container{
+    background-color: white;
+    height: auto;
+    width: 300px;
+    margin: 10px;
+    padding: 20px 35px;
+    border-radius: 10px;    
+}
+
+.product-card-container:hover{
+ box-shadow:  0 0 8px 1px black;
+}
+
+.product-img{
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    
+}
+.product-name{
+    padding: 5px;
+}
+.product-price{
+    color: red;
+    font-size: 30px;
+    padding: 5px;
+}
+.buy-now{
+    background-color: rgb(255, 240, 23);
+
+}
+.buy-now:hover{
+    box-shadow: 0 0 5px 0.5px black;
+}

@@ -6,27 +6,48 @@ import './Home.css';
 
 function Home (){
 
-    const [product, setProduct] = useState('');
+    const [products, setProducts] = useState([]);
+
+    const  loadProduct = async () =>{
+     
+      try{
+        const response = await axios.get('/products');
+        setProducts(response?.data?.data);
+      } 
+      catch(err){
+        console.log(alert);
+        alert("Error loading products")
+      }
+    };
 
     useEffect(() => {
-        const storageUse = JSON.parse(localStorage.getItem("user") || '{}');
-        setProduct(storageUse);
+     loadProduct();
     }, [])
-
-    // const product = async () => {
-
-    //     const response = await axios.post("/products", {
-
-           
-    //     })
 
     return(
         <>
-        <Navbar/>
         <div>
-            <ProductCard />
+        <Navbar/>
+        <div className="product-container">
+            { 
+             products?.map(( product, index) => {
+             const {name, description, price, image} = product;
+                return(
+                    <ProductCard key={index}
+                      name={name}
+                      description={description}
+                      price={price}
+                      image={image}
+                      
+                    />
+                )
+
+           })
+                
+            }
+          
         </div>
-        <h2>Home</h2>
+        </div>
         </>
     )
 }

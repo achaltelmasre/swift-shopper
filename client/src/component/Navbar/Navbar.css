@@ -13,12 +13,16 @@
     font-size: 23px;
     margin: 10px 20px;
     padding-top: 20px;
+    padding-bottom: 5px;
    
 }
 .navbar-link:hover{
 
     color: red;
-    text-decoration:  3px underline rgb(45, 247, 45);
+ 
+    /* text-decoration:  3px underline rgb(45, 247, 45); */
+    border-bottom: 4px solid rgb(255, 240, 23);
+
     /* padding: 15px 10px; */
 }
 .user{
