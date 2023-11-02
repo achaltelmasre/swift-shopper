@@ -19,6 +19,10 @@ shippingAddress: {
     type: String,
     required: true,
 },
+deliveryCharges: {
+   type: Number,
+   default: 0 ,
+},
 status: {
     type: String,
     default: 'pending',
