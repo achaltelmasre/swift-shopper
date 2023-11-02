@@ -40,12 +40,56 @@
     margin: 10px;
     font-weight: bold;
 }
+.product-quantity{
+    font-size: 22px;
+    margin-left: 20px;
+}
+.quantity{
+    font-weight: bolder;
+    font-size: 25px;
+}
+.buy-product-name{
+    padding: 10px;
+}
+.buy-product-description{
+    font-size: 20px;
+    padding: 10px;
+}
+.buy-product-price{
+    font-size: 30px;
+    padding: 10px;
+}
+
 .input-shipping-Address{
     margin-top: 30px;
     width: 400px;
     height: 50px;
     font-size: 20px;
     padding: 10px 20px;
+    outline: none;
+}
+.btn-place-order{
+    display: block;
+    margin: 20px auto;
+    width: 300px;
+    cursor: pointer;
+    background-color: rgb(2, 2, 49);
+    color: white;
+
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 15px;
+    
+}
+.delivery-charge{
+    font-size: 20px;
+    
+}
+.delivery{
+    margin: 20px;
 }
 
 @media only screen and (max-width: 768px) {
