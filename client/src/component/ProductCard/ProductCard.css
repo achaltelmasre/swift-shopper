@@ -10,6 +10,9 @@
 .product-card-container:hover{
  box-shadow:  0 0 8px 1px black;
 }
+.product-info{
+    margin: 25px 30px;
+}
 
 .product-img{
     width: 100%;
@@ -23,11 +26,20 @@
 .product-price{
     color: red;
     font-size: 30px;
-    padding: 5px;
+    padding: 15px;
 }
 .buy-now{
     background-color: rgb(255, 240, 23);
-
+     color: black;
+     padding: 10px 20px;
+     font-size: 20px;
+     border-radius: 10px;
+     text-align: center;
+     text-decoration: none;
+     margin-top: 15px;
+     margin: 0 auto;
+     display: block;
+    
 }
 .buy-now:hover{
     box-shadow: 0 0 5px 0.5px black;

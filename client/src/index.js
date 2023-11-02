@@ -4,6 +4,7 @@ import Signup from './view/Signup/Signup';
 import Login from './view/Login/Login';
 import Home from './view/Home/Home'
 import Orders from './view/Orders/Orders'
+import Buypage from './view/Buypage/Buypage'
 
 import './index.css';
 
@@ -23,7 +24,12 @@ const router = createBrowserRouter([
     {
         path:'/orders',
         element:<Orders/>
+    },
+    {
+        path:'/buy/:id',
+        element:<Buypage/>
     }
+    
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
