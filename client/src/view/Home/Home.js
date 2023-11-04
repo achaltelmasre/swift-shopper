@@ -19,6 +19,7 @@ function Home (){
          setProducts(response?.data?.data);
     }
 
+    
      useEffect (() =>{
       searchProducts();
     }, [search]);
