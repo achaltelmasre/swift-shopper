@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import logo from './img/logo.png';
-
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
@@ -21,6 +20,10 @@ function Navbar () {
                   </span>
 
                   <div className="navbar-link-container">
+                  <Link to="/" className="navbar-link">
+                        Home
+                    </Link>
+
                     <Link to="/login" className="navbar-link">
                         Login
                     </Link>

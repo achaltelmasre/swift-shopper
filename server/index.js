@@ -1,5 +1,5 @@
 import express  from "express";
-import mongoose from "mongoose";
+import mongoose, { STATES } from "mongoose";
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -244,7 +244,7 @@ app.get("/order/:id", async (req, res) =>{
 app.get("/orders/user/:id", async(req, res) =>{
     const {id} = req.params;
 
-    const orders = await Order.find({user: id}).populate("user product");
+    const orders = await Order.find({user: id}).populate('product user');
     
     res.json({
         success: true,
@@ -256,8 +256,34 @@ app.get("/orders/user/:id", async(req, res) =>{
 //Patch/order/status/:id
 app.patch("/order/status/:id", async(req, res) => {
  const {id} = req.params;
-
  const {status} = req.body;
+
+ const STATUS_PRIORITY_MAP = {
+   pending:0,
+   shipped:1,
+   delivered:2,
+   returned:3,
+   cancelled:4,
+   rejected:5
+ }
+
+ const order = await Order.findById(id);
+ const currentStatus = order.status;
+
+ const currentPriority = STATUS_PRIORITY_MAP [currentStatus];
+ const newPriority = STATUS_PRIORITY_MAP [status];
+
+ if(currentPriority > newPriority) {
+    
+    return res.json({
+        success: false,
+        message: `${status} cannot be set once order is ${currentStatus}`
+    });
+ }
+
+ await Order.updateOne({_id: id}, {$set: {status: status}});
+
+
 
  await Order.updateOne ({_id: id},
     {$set: {status:status}});

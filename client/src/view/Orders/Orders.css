@@ -1,0 +1,24 @@
+.orders-container{
+    padding: 10px 50px;
+}
+.order-card{
+    background-color: #fff;
+    padding: 10px;
+    margin: 10px;
+    position: relative;
+
+}
+.order-status{
+    font-weight: bold;
+}
+
+.badge-denger{
+    color: red; 
+
+}
+.badge-success{
+    color: Green;
+}
+.badge-warning{
+    color: rgb(240, 198, 12);
+}

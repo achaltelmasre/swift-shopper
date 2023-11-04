@@ -7,6 +7,21 @@ import './Home.css';
 function Home (){
 
     const [products, setProducts] = useState([]);
+    const [search, setSearch] = useState('');
+
+    const searchProducts = async () => {
+       if (search === '') {
+        loadProduct();
+        return;
+       }
+
+       const response = await axios.get(`/products/search?q=${search}`);
+         setProducts(response?.data?.data);
+    }
+
+     useEffect (() =>{
+      searchProducts();
+    }, [search]);
 
     const  loadProduct = async () =>{
      
@@ -28,6 +43,15 @@ function Home (){
         <>
         <div>
         <Navbar/>
+
+        <input type="text" 
+          placeholder="Search" 
+          className="search-bar"
+           value={search}
+            onChange={(e) => {
+              setSearch(e.target.value)
+            }}/>
+
         <div className="product-container">
             { 
              products?.map(( product, index) => {
