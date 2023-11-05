@@ -4,7 +4,8 @@
 }
 
 body{
-    background-color: rgb(192, 192, 246);
+    /* background-color: rgb(192, 192, 246); */
+    background-color:  #fadfdc;
 }
 .text-center{
     text-align: center;
@@ -15,7 +16,7 @@ body{
     margin: 30px auto;
     padding: 15px 35px;
     border-radius: 10px;
-    box-shadow: 0 0 10px 0.5px rgb(14, 47, 195); 
+    box-shadow: 0 0 5px  rgb(236, 27, 27); 
 }
 
 .input-form{
